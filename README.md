@@ -5,7 +5,6 @@ testapp_IP = 84.201.130.243
 testapp_port = 9292
 
 Задание: В результате применения CLI мы должны получать инстанс с уже запущенным приложением.
-
 Ответ:
 yc compute instance create \
 --name reddit-app \

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo apt-get install -y ruby-full ruby-bundler build-essential
+sudo apt-get install -y git apt-transport-https build-essential ruby-full ruby-bundler
