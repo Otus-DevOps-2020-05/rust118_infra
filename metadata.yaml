@@ -28,9 +28,12 @@ write_files:
 write_files:
 - content: |
     #!/bin/bash
-    sudo apt-get install -y build-essential git apt-transport-https ruby-full ruby-bundler
+    sudo apt-get install -y build-essential
+    sudo apt-get install -y git
+    sudo apt-get install -y apt-transport-https
+    sudo apt-get install -y ruby-full ruby-bundler
   path: /usr/local/bin/install_ruby.sh
-  permissions: '0700'
+  permissions: '0755'
 
 write_files:
 - content: |
@@ -42,7 +45,7 @@ write_files:
     sudo systemctl start mongod
     sudo systemctl enable mongod
   path: /usr/local/bin/install_mongodb.sh
-  permissions: '0700'
+  permissions: '0755'
 
 runcmd:
   - /usr/local/bin/install_ruby.sh
