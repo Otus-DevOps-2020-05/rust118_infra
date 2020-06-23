@@ -20,14 +20,7 @@ users:
 write_files:
 - content: |
     #!/bin/bash
-    cd ~reddit
-    git clone -b monolith https://github.com/express42/reddit.git && cd reddit && bundle install && puma -d
-  path: /usr/local/bin/reddit_deploy.sh
-  permissions: '0755'
-
-write_files:
-- content: |
-    #!/bin/bash
+    sudo add-apt-repository universe multiverse
     sudo apt-get update
     sudo apt-get -y upgrade
     sudo apt-get install -y build-essential
@@ -49,10 +42,18 @@ write_files:
   path: /usr/local/bin/install_mongodb.sh
   permissions: '0755'
 
+write_files:
+- content: |
+    #!/bin/bash
+    cd ~reddit
+    git clone -b monolith https://github.com/express42/reddit.git && cd reddit && bundle install && puma -d
+  path: /usr/local/bin/deploy.sh
+  permissions: '0755'
+
 runcmd:
   - /usr/local/bin/install_ruby.sh
   - /usr/local/bin/install_mongodb.sh
-  - sudo -u reddit /usr/local/bin/reddit_deploy.sh
+  - sudo -u reddit /usr/local/bin/deploy.sh
 
 # эта часть работала в яндекс.облаке, но не работает в этих ваших докерах
 #
