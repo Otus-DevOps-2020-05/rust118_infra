@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export APPOWNER="reddit"
+APPOWNER="reddit"
 
 apt-get install -y git
 useradd -U -d /home/$APPOWNER -s /bin/bash $APPOWNER
