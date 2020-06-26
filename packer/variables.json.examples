@@ -1,9 +1,0 @@
-
-{
-  "project_id": "Project_NO_1",
-  "catalogue_id": "xxxxxxxxxxxxx",
-  "os_image_id": "exampleos-version",
-  "disk_type": "network_hdd",
-  "disk_size": "10",
-  "path_to_service_account_key": "/path/to/key.json"
-}
