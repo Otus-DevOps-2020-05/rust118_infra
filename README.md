@@ -37,7 +37,7 @@ ssh -J appuser@84.201.133.2 appuser@10.130.0.28
 echo \
 "Host bastion
     HostName 84.201.133.2
-    User app-user
+    User appuser
 
 Host someinternalhost
     HostName 10.130.0.28
