@@ -1,6 +1,15 @@
 # rust118_infra
 rust118 Infra repository
 
+Задание: Создать fried образ ОС с помощью утилиты packer, проверить, создав ВМ из образа и уставовив приложение.
+Ответ: ubuntu16.json
+
+Задание: Создать baked образ ОС с помощью утилиты packer, проверить, создав ВМ из образа.
+Ответ: immutable.json
+
+Задание: автоматизировать создание ВМ из baked-образа, с помощью yccli.
+Ответ: config-scripts/create-reddit-vm.sh
+
 testapp_IP = 84.201.130.243
 testapp_port = 9292
 
