@@ -15,7 +15,7 @@ resource "yandex_compute_instance" "my-app" {
     host        = self.network_interface.0.nat_ip_address
     user        = "ubuntu"
     agent       = false
-    private_key = file("~/.ssh/yc")
+    private_key = file(var.private_key_path))
   }
 
   provisioner "file" {
