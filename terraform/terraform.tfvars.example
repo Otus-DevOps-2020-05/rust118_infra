@@ -1,0 +1,4 @@
+cloud_id  = "aaa"
+folder_id = "bbb"
+image_id  = "ccc"
+zone      = "ru-central1-a"
