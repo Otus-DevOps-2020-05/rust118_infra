@@ -30,12 +30,12 @@ variable svc_acct_key_file {
 
 variable private_key_path {
   description = "Path to private key used for ssh access"
-  default     = "~/.ssh/yc"
+  default     = "~/.ssh/ubuntu"
 }
 
 variable public_key_path {
   description = "Path to public key used for ssh access"
-  default     = "~/.ssh/yc.pub"
+  default     = "~/.ssh/ubuntu.pub"
 }
 
 variable instances {
