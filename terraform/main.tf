@@ -31,6 +31,7 @@ resource "yandex_compute_instance" "my-app" {
   resources {
     core_fraction = 20
     cores         = 2
+
     memory        = 2
   }
 
