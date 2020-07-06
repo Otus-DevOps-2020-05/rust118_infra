@@ -1,3 +1,5 @@
+terraform { required_version = "~> 0.12.0" }
+
 provider "yandex" {
   service_account_key_file = var.svc_acct_key_file
   cloud_id                 = var.cloud_id
@@ -5,9 +7,8 @@ provider "yandex" {
 }
 
 resource "yandex_compute_instance" "my-app" {
-
   name = "reddit-app${count.index}"
-  zone = var.zone
+  zone  = var.zone
   count = var.instances
 
   connection {
@@ -24,12 +25,13 @@ resource "yandex_compute_instance" "my-app" {
   }
 
   provisioner "remote-exec" {
-    script = "files/deploy.sh"
+    script      = "files/deploy.sh"
   }
 
   resources {
-    core_fraction = 5
-    cores         = 1
+    core_fraction = 20
+    cores         = 2
+
     memory        = 2
   }
 
