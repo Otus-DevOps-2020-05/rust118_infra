@@ -6,10 +6,6 @@ variable folder_id {
   description = "Folder"
 }
 
-variable image_id {
-  description = "Image"
-}
-
 variable region {
   description = "Region"
   default     = "ru-central1"
@@ -51,7 +47,6 @@ variable aws_credentials_path {
 variable db_disk_image {
   description = "Disk image id for reddit db"
   default     = "fd8grn64stm2cahp9ah0"
-  #  default     = "fd8bp3upajf1gfk5eesu"
 }
 
 variable app_disk_image {
