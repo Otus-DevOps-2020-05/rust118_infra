@@ -3,18 +3,14 @@
 case $1 in
 
     "--list")
-	cd ../terraform/prod > /dev/null
-        DB_IP=$(terraform show | grep external_ip_address_my-db | awk '{print $3}')
-        APP_IP=$(terraform show | grep external_ip_address_my-app | awk '{print $3}')
-	cd - > /dev/null
 	echo -e "{\n" \
 		"    \"_meta\": {\n" \
 		"        \"hostvars\": {\n" \
 		"            \"appserver\": {\n" \
-		"                \"ansible_host\": $APP_IP\n" \
+		"                \"ansible_host\": $(yc compute instance get reddit-app --format json | jq '.network_interfaces[].primary_v4_address.one_to_one_nat.address')\n" \
 		"            },\n" \
 		"            \"dbserver\": {\n" \
-		"                \"ansible_host\": $DB_IP\n" \
+		"                \"ansible_host\": $(yc compute instance get reddit-db --format json | jq '.network_interfaces[].primary_v4_address.one_to_one_nat.address')\n" \
 		"            }\n" \
 		"        }\n" \
 		"    },\n" \
@@ -38,6 +34,12 @@ case $1 in
 		"}\n" \
 	;;
 
+#    "--host")
+#	echo -e "{\n" \
+#		"    \"ansible_host\": $(yc compute instance get $2 --format json | jq '.network_interfaces[].primary_v4_address.one_to_one_nat.address')\n" \
+#		"}\n"
+#	;;
+#
     *)
 	echo "Usage: $0 --list [hostname]"
 	exit 1
