@@ -3,7 +3,7 @@ resource "yandex_compute_instance" "app" {
   name = "reddit-app"
 
   labels = {
-    tags = "reddit-app"
+    tags = "reddit"
   }
 
   resources {
