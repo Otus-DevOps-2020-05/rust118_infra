@@ -8,17 +8,17 @@ variable subnet_id {
 
 variable username {
   description = "User name"
-  default     = "ubuntu"
+  default     = "appuser"
 }
 
 variable private_key_path {
   description = "Path to private key used for ssh access"
-  default     = "~/.ssh/ubuntu"
+  default     = "~/.ssh/appuser"
 }
 
 variable public_key_path {
   description = "Path to public key used for ssh access"
-  default     = "~/.ssh/ubuntu.pub"
+  default     = "~/.ssh/appuser.pub"
 }
 
 variable do_provisioning {

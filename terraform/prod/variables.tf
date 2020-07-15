@@ -46,10 +46,10 @@ variable aws_credentials_path {
 
 variable db_disk_image {
   description = "Disk image id for reddit db"
-  default     = "fd8grn64stm2cahp9ah0"
+  default     = "fd863k9qrmhh0mirci17"
 }
 
 variable app_disk_image {
   description = "Disk image id for reddit app"
-  default     = "fd8g38a4u60ra7pq28ho"
+  default     = "fd85icaoprlonf51arg3"
 }

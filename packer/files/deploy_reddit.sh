@@ -1,12 +1,14 @@
 #!/bin/bash
 
-APPOWNER="reddit"
+APPOWNER="appuser"
+APPOWNERHOME="/home/$APPOWNER"
+APPDIR="$APPOWNERHOME/app"
 
 apt-get install -y git
-useradd -U -d /home/$APPOWNER -s /bin/bash $APPOWNER
-sudo git clone -b monolith https://github.com/express42/reddit.git /home/$APPOWNER/app
-chown -R $APPOWNER:$APPOWNER /home/$APPOWNER
-cd /home/$APPOWNER/app && bundle install
+useradd -U -d $APPOWNERHOME -s /bin/bash $APPOWNER
+sudo git clone -b monolith https://github.com/express42/reddit.git $APPDIR
+chown -R $APPOWNER:$APPOWNER $APPDIR
+cd $APPOWNERHOME && bundle install
 
 echo "[Unit]
 Description=Puma HTTP Server
@@ -17,7 +19,7 @@ Requires=mongod.service
 Type=simple
 User=$APPOWNER
 Group=$APPOWNER
-WorkingDirectory=/home/$APPOWNER/app
+WorkingDirectory=$APPDIR
 ExecStart=/usr/local/bin/puma
 Restart=always
 
