@@ -1,4 +1,4 @@
-cloud_id         = "aaa"
-folder_id        = "bbb"
-image_id         = "ccc"
-subnet_id        = "ddd"
+cloud_id  = "aaa"
+folder_id = "bbb"
+image_id  = "ccc"
+subnet_id = "ddd"
