@@ -1,5 +1,6 @@
 variable disk_image {
-  description = "Disk image for reddit app"
+  description = "Disk image id for reddit app"
+  default     = "fd85icaoprlonf51arg3"
 }
 
 variable subnet_id {
@@ -8,17 +9,17 @@ variable subnet_id {
 
 variable username {
   description = "User name"
-  default     = "appuser"
+  default     = "ubuntu"
 }
 
 variable private_key_path {
   description = "Path to private key used for ssh access"
-  default     = "~/.ssh/appuser"
+  default     = "~/.ssh/ubuntu"
 }
 
 variable public_key_path {
   description = "Path to public key used for ssh access"
-  default     = "~/.ssh/appuser.pub"
+  default     = "~/.ssh/ubuntu.pub"
 }
 
 variable do_provisioning {
