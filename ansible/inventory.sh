@@ -3,10 +3,14 @@
 case $1 in
 
     "--list")
-	cd ../terraform/prod > /dev/null
-        DB_IP=$(terraform show | grep external_ip_address_my-db | awk '{print $3}')
-        APP_IP=$(terraform show | grep external_ip_address_my-app | awk '{print $3}')
-	cd - > /dev/null
+	if [ -f ../my.addresses ]
+	then
+	    sh -c "../my.tf-apply.sh"
+	fi
+
+        DB_IP=$(cat ../my.addresses | grep external_ip_address_my-db | awk '{print "\""$3"\""}')
+        APP_IP=$(cat ../my.addresses | grep external_ip_address_my-app | awk '{print "\""$3"\""}')
+
 	echo -e "{\n" \
 		"    \"_meta\": {\n" \
 		"        \"hostvars\": {\n" \
@@ -39,7 +43,7 @@ case $1 in
 	;;
 
     *)
-	echo "Usage: $0 --list [hostname]"
+	echo "Usage: $0 --list"
 	exit 1
 	;;
 esac
