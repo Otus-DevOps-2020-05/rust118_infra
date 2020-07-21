@@ -1,0 +1,25 @@
+plugin: yc_compute
+auth_kind: serviceaccountfile
+service_account_file: /Users/elmar/.config/yandex-cloud/keys/r118-a.json
+folders:
+  - b1gkrmgpe8oek32ul0n1
+hostnames:
+  - public_ip
+#  - fqdn
+#filters:
+#  - status == 'RUNNING'
+compose:
+  ansible_host: network_interfaces[0].primary_v4_address.one_to_one_nat.address
+keyed_groups:
+  - key: labels
+#    prefix: ''
+#    separator: '-'
+
+# Place hosts in groups named by value of labels['group'].
+#  - key: labels['image_name']
+#groups:
+#  app: "'app' in (tags['items']|join(' '))"
+#  db: "'db' in (tags['items']|join(' '))"
+#
+#   Place hosts in 'ssd' group if they have appropriate disk_type label.
+#  ssd: labels['disk_type'] == 'ssd'

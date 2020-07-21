@@ -1,6 +1,6 @@
 variable disk_image {
   description = "Disk image id for reddit app"
-  default     = "fd85icaoprlonf51arg3"
+  default     = "fd89n6gu8majer534uc9"
 }
 
 variable subnet_id {
