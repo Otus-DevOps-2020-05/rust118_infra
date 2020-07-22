@@ -23,7 +23,6 @@
       "type": "ansible",
       "playbook_file": "ansible/packer_db.yml",
       "user": "ubuntu",
-#      "use_proxy": false,
       "pause_before": "30s"
     }
   ]
