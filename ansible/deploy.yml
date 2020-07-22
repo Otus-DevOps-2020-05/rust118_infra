@@ -1,5 +1,6 @@
+---
 - name: Deploy app
-  hosts: _tags_app
+  hosts: app
   become: true
   tasks:
   - name: Install git

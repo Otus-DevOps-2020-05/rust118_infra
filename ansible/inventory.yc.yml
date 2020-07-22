@@ -1,3 +1,4 @@
+---
 plugin: yc_compute
 auth_kind: serviceaccountfile
 service_account_file: /Users/elmar/.config/yandex-cloud/keys/r118-a.json
@@ -14,10 +15,14 @@ keyed_groups:
   - key: labels
 #    prefix: ''
 #    separator: '-'
+  - key: labels['role']
 
 # Place hosts in groups named by value of labels['group'].
-#  - key: labels['image_name']
+#  - key: labels['']
+
 #groups:
+#  - key: labels
+
 #  app: "'app' in (tags['items']|join(' '))"
 #  db: "'db' in (tags['items']|join(' '))"
 #
