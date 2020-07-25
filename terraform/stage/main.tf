@@ -8,6 +8,8 @@ provider "yandex" {
 module "app" {
   source           = "../modules/app"
   subnet_id        = var.subnet_id
+  is_preemptible   = true
+  env_name         = "stage"
   db_addr          = module.db.internal_ip_address_db
   do_provisioning  = false
 }
@@ -15,4 +17,6 @@ module "app" {
 module "db" {
   source           = "../modules/db"
   subnet_id        = var.subnet_id
+  is_preemptible   = true
+  env_name         = "stage"
 }

@@ -4,12 +4,17 @@ resource "yandex_compute_instance" "db" {
 
   labels = {
     tags = "db"
+    env  = var.env_name
   }
 
   resources {
     core_fraction = 20
     cores         = 2
     memory        = 2
+  }
+
+  scheduling_policy {
+     preemptible = var.is_preemptible
   }
 
   boot_disk {

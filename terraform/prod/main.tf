@@ -8,11 +8,13 @@ provider "yandex" {
 module "app" {
   source           = "../modules/app"
   subnet_id        = var.subnet_id
+  env_name         = "prod"
   db_addr          = module.db.internal_ip_address_db
-  do_provisioning  = true
+  do_provisioning  = false
 }
 
 module "db" {
   source           = "../modules/db"
   subnet_id        = var.subnet_id
+  env_name         = "prod"
 }

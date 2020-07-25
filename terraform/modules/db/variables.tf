@@ -21,3 +21,14 @@ variable public_key_path {
   description = "Path to public key used for ssh access"
   default     = "~/.ssh/ubuntu.pub"
 }
+
+variable env_name {
+  type        = string
+  description = "Environment name"
+}
+
+variable is_preemptible {
+  type        = bool
+  description = "Preemptible flag"
+  default     = false
+}
