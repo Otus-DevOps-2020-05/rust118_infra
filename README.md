@@ -1,18 +1,24 @@
 # rust118_infra
-rust118 Infra repository
+rust118 Infra repository [![Build Status](https://travis-ci.com/Otus-DevOps-2020-05/rust118_infra.svg?branch=master)](https://travis-ci.com/Otus-DevOps-2020-05/rust118_infra)
 
-№12
-Реализованы подходы: один плейбук - один сценарий, один плейбук - много сценариев, много плейьуков - много сценариев.
-Развертываене образов Packer переписано с использованием сценариев Ansible.
-Инвентаризация теперь происходит через плагин yc_compute.
+## №13
 
-№11
+Динамическая инвентаризация производится модулем yc_compute, который читает настройки из ansible/environment/<env>/yc.yml
+
+
+
+## №12
+- Реализованы подходы: один плейбук - один сценарий, один плейбук - много сценариев, много плейбуков - много сценариев.
+- Развертываене образов Packer переписано с использованием сценариев Ansible.
+- Инвентаризация теперь происходит через плагин yc_compute.
+
+## №11
 - Реализовано развертывание приложения на ansible
 - С помощью ansible-inventory создан файл inventory.json
 - inventoty.sh при указании параметра --list генерирует json с актуальными ip-адресами, получаемыми от terraform.
 - Развертывание приложения теперь происходит через ansible-playbook
 
-№10
+## №10
 - Созданые новые образы для БД и приложения
 - База данных вынесена в отдельную ВМ
 - Создание ВМ для БД и приложения вынесено в модули
@@ -20,7 +26,7 @@ rust118 Infra repository
 - Добавлен provisioner для развертывания приложения
 - Реализовано отключение provisioner в зависимости от значения переменной "do_provisioning"
 
-№8
+## №8
 - Создана переменная для приватного ключа
 - Создана переменная для зоны со значением по умолчанию
 - Исходники отформатированы
@@ -32,7 +38,7 @@ rust118 Infra repository
 - Добавлена output-переменная для адреса балансировщика
 - Реализована конфигурация к применением количества экземпляов через count
 
-№7
+## №7
 Задание: Создать fried образ ОС с помощью утилиты packer, проверить, создав ВМ из образа и уставовив приложение.
 Ответ: ubuntu16.json
 
@@ -42,7 +48,7 @@ rust118 Infra repository
 Задание: автоматизировать создание ВМ из baked-образа, с помощью yccli.
 Ответ: config-scripts/create-reddit-vm.sh
 
-№6
+## №6
 testapp_IP = 84.201.130.243
 testapp_port = 9292
 
@@ -57,7 +63,7 @@ yc compute instance create \
 --metadata serial-port-enable=1 \
 --metadata-from-file user-data=metadata.yaml
 
-№5
+## №5
 bastion_IP = 84.201.133.2
 someinternalhost_IP = 10.130.0.28
 
@@ -67,13 +73,13 @@ ssh -J appuser@84.201.133.2 appuser@10.130.0.28
 
 Задание: Предложить вариант решения для подключения из консоли при помощи команды вида ssh someinternalhost из локальной консоли рабочего устройства, чтобы подключение выполнялось по алиасу someinternalhost.
 Ответ:
-echo \
-"Host bastion
-    HostName 84.201.133.2
-    User appuser
-
-Host someinternalhost
-    HostName 10.130.0.28
-    User appuser
-    ProxyJump bastion" \
->> ~/.ssh/config
+> echo \
+> "Host bastion
+>     HostName 84.201.133.2
+>     User appuser
+> 
+> Host someinternalhost
+>     HostName 10.130.0.28
+>     User appuser
+>     ProxyJump bastion" \
+> >> ~/.ssh/config
