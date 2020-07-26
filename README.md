@@ -1,4 +1,4 @@
-# rust118_infra
+# rust118_infra [![Build Status](https://travis-ci.com/Otus-DevOps-2020-05/rust118_infra.svg?branch=master)](https://travis-ci.com/Otus-DevOps-2020-05/rust118_infra)
 rust118 Infra repository
 
 №12
