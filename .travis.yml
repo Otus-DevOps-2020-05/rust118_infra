@@ -1,10 +1,10 @@
 dist: xenial
 sudo: required
 language: bash
-script:
-- 'if [ "$TRAVIS_PULL_REQUEST" = "true" ] || [ "$TRAVIS_BRANCH" = "master" ] then bash ./travis/on_non_pull_requests.sh; fi'
 before_install:
 - curl https://raw.githubusercontent.com/express42/otus-homeworks/2020-05/run.sh | bash
+- if [ $TRAVIS_EVENT_TYPE == "pull_request" ] || [ ( $TRAVIS_BRANCH == "master" && $TRAVIS_EVENT_TYPE == "push" ) ] then ./travis/on_pull_requests.sh else echo "tests skipped" fi
+
 notifications:
   slack:
     rooms:
