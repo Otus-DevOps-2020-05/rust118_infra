@@ -2,8 +2,9 @@ dist: xenial
 sudo: required
 language: bash
 before_install:
+#- if [ $TRAVIS_EVENT_TYPE == "pull_request" ] || [ ( $TRAVIS_BRANCH == "master" && $TRAVIS_EVENT_TYPE == "push" ) ] then bash ./tests/on_pull_requests.sh fi
+- tests/on_master_or_pr.sh
 - curl https://raw.githubusercontent.com/express42/otus-homeworks/2020-05/run.sh | bash
-- if [ $TRAVIS_EVENT_TYPE == "pull_request" ] || [ ( $TRAVIS_BRANCH == "master" && $TRAVIS_EVENT_TYPE == "push" ) ] then bash ./tests/on_pull_requests.sh fi
 notifications:
   slack:
     rooms:

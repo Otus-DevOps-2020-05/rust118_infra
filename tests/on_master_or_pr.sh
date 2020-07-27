@@ -1,5 +1,9 @@
 #!/bin/bash
 
+echo "TRAVIS_BRANCH=$TRAVIS_BRANCH"
+echo "TRAVIS_PULL_REQUEST=$TRAVIS_PULL_REQUEST"
+echo "TRAVIS_BUILD_DIR=$TRAVIS_BUILD_DIR"
+
 cd $TRAVIS_BUILD_DIR
 echo "validating db.json"  && packer validate -var-file packer/variables.json packer/db.json
 echo "validating app.json" && packer validate -var-file packer/variables.json packer/app.json
