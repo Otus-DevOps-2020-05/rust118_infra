@@ -1,1 +1,1 @@
-mongo_bind_ip: 10.130.0.19
+mongo_bind_ip: "{{ hostvars[groups['db'][0]]['private_ip'] }}"
