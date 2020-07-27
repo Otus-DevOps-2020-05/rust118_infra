@@ -9,10 +9,10 @@ PATH=$TRAVIS_BUILD_DIR:$PATH
 
 cd $TRAVIS_BUILD_DIR
 
-curl -o p.zip https://releases.hashicorp.com/packer/1.6.0/packer_1.6.0_linux_amd64.zip && unzip -o p.zip
-curl -o tf.zip https://releases.hashicorp.com/terraform/0.12.29/terraform_0.12.29_linux_amd64.zip && unzip -o tf.zip
-curl -L "$(curl -Ls https://api.github.com/repos/terraform-linters/tflint/releases/latest | grep -o -E "https://.+?_linux_amd64.zip")" -o tflint.zip && unzip -o tflint.zip
-pip install --user ansible-lint
+#curl -o p.zip https://releases.hashicorp.com/packer/1.6.0/packer_1.6.0_linux_amd64.zip && unzip -o p.zip
+#curl -o tf.zip https://releases.hashicorp.com/terraform/0.12.29/terraform_0.12.29_linux_amd64.zip && unzip -o tf.zip
+#curl -L "$(curl -Ls https://api.github.com/repos/terraform-linters/tflint/releases/latest | grep -o -E "https://.+?_linux_amd64.zip")" -o tflint.zip && unzip -o tflint.zip
+#pip install --user ansible-lint
 #- sudo apt update
 #- sudo apt install software-properties-common
 #- sudo apt-add-repository --yes --update ppa:ansible/ansible
