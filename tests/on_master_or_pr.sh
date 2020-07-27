@@ -6,6 +6,16 @@ echo "TRAVIS_PULL_REQUEST=$TRAVIS_PULL_REQUEST"
 echo "TRAVIS_BUILD_DIR=$TRAVIS_BUILD_DIR"
 
 cd $TRAVIS_BUILD_DIR
+
+curl -o p.zip https://releases.hashicorp.com/packer/1.6.0/packer_1.6.0_linux_amd64.zip && unzip p.zip
+curl -o tf.zip https://releases.hashicorp.com/terraform/0.12.29/terraform_0.12.29_linux_amd64.zip && unzip tf.zip
+curl -L "$(curl -Ls https://api.github.com/repos/terraform-linters/tflint/releases/latest | grep -o -E "https://.+?_linux_amd64.zip")" -o tflint.zip && unzip tflint.zip
+pip install --user ansible-lint
+#- sudo apt update
+#- sudo apt install software-properties-common
+#- sudo apt-add-repository --yes --update ppa:ansible/ansible
+#- sudo apt install ansible
+
 echo "validating db.json"  && packer validate -var-file packer/variables.json packer/db.json
 echo "validating app.json" && packer validate -var-file packer/variables.json packer/app.json
 
