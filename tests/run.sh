@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker exec hw-test bash ./on_master_or_pr.sh
+docker exec hw-test bash ./tests/on_master_or_pr.sh
