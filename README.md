@@ -1,18 +1,25 @@
 # rust118_infra
+[![Build Status](https://travis-ci.com/Otus-DevOps-2020-05/rust118_infra.svg?branch=master)](https://travis-ci.com/Otus-DevOps-2020-05/rust118_infra)
+
 rust118 Infra repository
 
-№12
-Реализованы подходы: один плейбук - один сценарий, один плейбук - много сценариев, много плейьуков - много сценариев.
-Развертываене образов Packer переписано с использованием сценариев Ansible.
-Инвентаризация теперь происходит через плагин yc_compute.
+## №13
+Динамическая инвентаризация производится модулем yc_compute, который читает настройки из yc.yml в папке, соответствующей окружению.
 
-№11
+В README.md добавлен build status badge ветки master. Цитата из docs.travis-ci.com: "Note that PR builds do not affect badge status". Как бы намекает на абсурдность одного из требований ДЗ.
+
+## №12
+- Реализованы подходы: один плейбук - один сценарий, один плейбук - много сценариев, много плейбуков - много сценариев.
+- Развертываене образов Packer переписано с использованием сценариев Ansible.
+- Инвентаризация теперь происходит через плагин yc_compute.
+
+## №11
 - Реализовано развертывание приложения на ansible
 - С помощью ansible-inventory создан файл inventory.json
 - inventoty.sh при указании параметра --list генерирует json с актуальными ip-адресами, получаемыми от terraform.
 - Развертывание приложения теперь происходит через ansible-playbook
 
-№10
+## №10
 - Созданые новые образы для БД и приложения
 - База данных вынесена в отдельную ВМ
 - Создание ВМ для БД и приложения вынесено в модули
@@ -20,7 +27,7 @@ rust118 Infra repository
 - Добавлен provisioner для развертывания приложения
 - Реализовано отключение provisioner в зависимости от значения переменной "do_provisioning"
 
-№8
+## №8
 - Создана переменная для приватного ключа
 - Создана переменная для зоны со значением по умолчанию
 - Исходники отформатированы
@@ -32,7 +39,7 @@ rust118 Infra repository
 - Добавлена output-переменная для адреса балансировщика
 - Реализована конфигурация к применением количества экземпляов через count
 
-№7
+## №7
 Задание: Создать fried образ ОС с помощью утилиты packer, проверить, создав ВМ из образа и уставовив приложение.
 Ответ: ubuntu16.json
 
@@ -42,31 +49,32 @@ rust118 Infra repository
 Задание: автоматизировать создание ВМ из baked-образа, с помощью yccli.
 Ответ: config-scripts/create-reddit-vm.sh
 
-№6
-testapp_IP = 84.201.130.243
-testapp_port = 9292
+## №6
+`testapp_IP = 84.201.130.243
+testapp_port = 9292`
 
 Задание: В результате применения CLI мы должны получать инстанс с уже запущенным приложением.
 Ответ:
-yc compute instance create \
+`yc compute instance create \
 --name reddit-app \
 --hostname reddit-app \
 --memory=4 \
 --create-boot-disk image-folder-id=standard-images,image-family=ubuntu-1604-lts,size=4GB \
 --network-interface subnet-name=default-ru-central1-a,nat-ip-version=ipv4 \
 --metadata serial-port-enable=1 \
---metadata-from-file user-data=metadata.yaml
+--metadata-from-file user-data=metadata.yaml`
 
-№5
-bastion_IP = 84.201.133.2
-someinternalhost_IP = 10.130.0.28
+## №5
+`bastion_IP = 84.201.133.2
+someinternalhost_IP = 10.130.0.28`
 
 Задание: Исследовать способ подключения к someinternalhost в одну команду на рабочем устройстве.
 Ответ:
-ssh -J appuser@84.201.133.2 appuser@10.130.0.28
+`ssh -J appuser@84.201.133.2 appuser@10.130.0.28`
 
 Задание: Предложить вариант решения для подключения из консоли при помощи команды вида ssh someinternalhost из локальной консоли рабочего устройства, чтобы подключение выполнялось по алиасу someinternalhost.
 Ответ:
+```bash
 echo \
 "Host bastion
     HostName 84.201.133.2
@@ -77,3 +85,4 @@ Host someinternalhost
     User appuser
     ProxyJump bastion" \
 >> ~/.ssh/config
+```

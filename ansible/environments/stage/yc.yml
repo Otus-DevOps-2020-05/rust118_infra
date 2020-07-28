@@ -1,0 +1,13 @@
+plugin: yc_compute
+folders:
+  - b1gkrmgpe8oek32ul0n1
+auth_kind: serviceaccountfile
+service_account_file: /Users/elmar/.config/yandex-cloud/keys/r118-a.json
+compose:
+  ansible_host: network_interfaces[0].primary_v4_address.one_to_one_nat.address
+filters:
+  - labels['env'] == 'stage'
+keyed_groups:
+  - key: labels['tags']
+    separator: ''
+    prefix: ''

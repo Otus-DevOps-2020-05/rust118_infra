@@ -3,6 +3,8 @@ sudo: required
 language: bash
 before_install:
 - curl https://raw.githubusercontent.com/express42/otus-homeworks/2020-05/run.sh | bash
+- tests/run.sh
+#- if [ $TRAVIS_EVENT_TYPE == "pull_request" ] || ( [ $TRAVIS_EVENT_TYPE == "push" ] && [ $TRAVIS_BRANCH == "master" ] ) then ./tests/on_pull_requests.sh; fi
 notifications:
   slack:
     rooms:

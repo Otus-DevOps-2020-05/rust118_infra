@@ -4,3 +4,4 @@ my.*
 *.tfstate.backup
 *.tfvars
 .terraform/
+jdauphant.nginx

@@ -32,3 +32,14 @@ variable db_addr {
   type        = string
   description = "MongoDB address"
 }
+
+variable env_name {
+  type        = string
+  description = "Environment name"
+}
+
+variable is_preemptible {
+  type        = bool
+  description = "Preemptible flag"
+  default     = false
+}
