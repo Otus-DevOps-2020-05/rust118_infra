@@ -74,7 +74,8 @@ someinternalhost_IP = 10.130.0.28`
 
 Задание: Предложить вариант решения для подключения из консоли при помощи команды вида ssh someinternalhost из локальной консоли рабочего устройства, чтобы подключение выполнялось по алиасу someinternalhost.
 Ответ:
-`echo \
+```bash
+echo \
 "Host bastion
     HostName 84.201.133.2
     User appuser
@@ -83,4 +84,5 @@ Host someinternalhost
     HostName 10.130.0.28
     User appuser
     ProxyJump bastion" \
->> ~/.ssh/config`
+>> ~/.ssh/config
+```
