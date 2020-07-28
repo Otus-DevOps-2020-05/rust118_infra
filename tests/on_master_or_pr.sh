@@ -20,8 +20,8 @@ echo $HOMEWORK
 #- sudo apt-add-repository --yes --update ppa:ansible/ansible
 #- sudo apt install ansible
 
-if [ $TRAVIS_EVENT_TYPE == "pull_request" ] || ( [ $TRAVIS_EVENT_TYPE == "push" ] && [ $TRAVIS_BRANCH == "master" ] ) then
-
+if [ "$TRAVIS_EVENT_TYPE" == "pull_request" ] || ( [ "$TRAVIS_EVENT_TYPE" == "push" ] && [ "$TRAVIS_BRANCH" == "master" ] )
+then
     echo "validating db.json"  && packer validate -var-file $HOMEWORK/packer/variables.json packer/db.json
     echo "validating app.json" && packer validate -var-file $HOMEWORK/packer/variables.json packer/app.json
 
